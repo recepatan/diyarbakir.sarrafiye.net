@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+    <loc>https://diyarbakir.sarrafiye.net/arsiv</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://diyarbakir.sarrafiye.net/arsiv?urun=kur</loc>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Ürün Bazlı Arşiv Sayfaları -->
+  <url>
+    <loc>https://diyarbakir.sarrafiye.net/arsiv?urun=gram-altin</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://diyarbakir.sarrafiye.net/arsiv?urun=22-ayar-bilezik</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://diyarbakir.sarrafiye.net/arsiv?urun=22-ayar-cnc</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://diyarbakir.sarrafiye.net/arsiv?urun=21-ayar-halep</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://diyarbakir.sarrafiye.net/arsiv?urun=14-ayar-altin</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://diyarbakir.sarrafiye.net/arsiv?urun=ceyrek-altin</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://diyarbakir.sarrafiye.net/arsiv?urun=yarim-altin</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://diyarbakir.sarrafiye.net/arsiv?urun=tam-ziynet</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://diyarbakir.sarrafiye.net/arsiv?urun=tam-ata-lira</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://diyarbakir.sarrafiye.net/arsiv?urun=gremse-altin</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://diyarbakir.sarrafiye.net/arsiv?urun=resat-yarim</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://diyarbakir.sarrafiye.net/arsiv?urun=resat-ceyrek</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://diyarbakir.sarrafiye.net/arsiv?urun=besli-ata-lira</loc>
+    <priority>0.7</priority>
+  </url>
+
+</urlset>
