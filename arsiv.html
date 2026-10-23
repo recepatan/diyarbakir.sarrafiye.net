@@ -25,9 +25,9 @@
   .cookie-choices-info{display:none !important;}
   :root{--main:#008a07;--border:#ffa500;}
   *{box-sizing:border-box;margin:0;padding:0;}
-  html,body{height:100%;}
-  body{background:radial-gradient(circle, #1a1a1a 0%, #000 100%);color:white;font-family:Arial;display:flex;flex-direction:column;overflow-x:hidden;}
-  nav{background:linear-gradient(180deg, var(--main) 0%, #000 100%);min-height:55px;max-height:10vh;display:flex;align-items:center;padding:0 15px;border-bottom:2px solid var(--border);z-index:10;flex-shrink:0;}
+  html,body{min-height:100vh;height:auto;}
+  body{background:radial-gradient(circle, #1a1a1a 0%, #000 100%);color:white;font-family:Arial;display:flex;flex-direction:column;overflow-x:hidden;overflow-y:auto;}
+  nav{background:linear-gradient(180deg, var(--main) 0%, #000 100%);min-height:55px;display:flex;align-items:center;padding:0 15px;border-bottom:2px solid var(--border);z-index:10;flex-shrink:0;}
   .logo-area{display:flex;align-items:center;gap:12px;}
   .logo-img{height:35px;cursor:pointer;}
   .theme-bar{display:flex;gap:8px;background:rgba(255,255,255,0.1);padding:5px 10px;border-radius:20px;border:1px solid var(--border);align-items:center;}
@@ -35,13 +35,13 @@
   #tarih_alan{font-size:clamp(12px, 1.2vw, 16px);font-weight:bold;color:white;}
   #fiyat_zaman_doviz{font-size:clamp(14px, 1.5vw, 20px);font-weight:bold;color:var(--border);}
   
-  .main-content{flex:1;display:flex;flex-direction:column;padding:10px;gap:10px;max-width:1400px;margin:0 auto;width:100%;min-height:0;}
-  .layout-wrapper{display:flex;gap:15px;width:100%;flex:1;min-height:0;align-items:stretch;}
-  .left-column{flex:1;display:flex;flex-direction:column;gap:8px;min-width:0;min-height:0;justify-content:space-between;}
-  .right-column{flex:1;display:flex;flex-direction:column;gap:8px;min-width:0;min-height:0;justify-content:space-between;}
+  .main-content{flex:1 0 auto;display:flex;flex-direction:column;padding:10px;gap:10px;max-width:1400px;margin:0 auto;width:100%;min-height:calc(100vh - 65px);}
+  .layout-wrapper{display:flex;gap:15px;width:100%;flex:1;align-items:stretch;}
+  .left-column{flex:1;display:flex;flex-direction:column;gap:8px;min-width:0;justify-content:space-between;}
+  .right-column{flex:1;display:flex;flex-direction:column;gap:8px;min-width:0;justify-content:space-between;}
   
-  .chart-box{background:rgba(255, 255, 255, 0.03);border:2px solid var(--main);border-radius:8px;padding:8px;display:flex;flex-direction:column;gap:6px;flex:1;min-height:0;}
-  .table-container-box{background:rgba(255, 255, 255, 0.03);border:2px solid var(--main);border-radius:8px;padding:6px;display:flex;flex-direction:column;flex:1;min-height:0;overflow:hidden;}
+  .chart-box{background:rgba(255, 255, 255, 0.03);border:2px solid var(--main);border-radius:8px;padding:8px;display:flex;flex-direction:column;gap:6px;flex:1;min-height:300px;}
+  .table-container-box{background:rgba(255, 255, 255, 0.03);border:2px solid var(--main);border-radius:8px;padding:6px;display:flex;flex-direction:column;flex:1;overflow:hidden;}
   
   .ad-container-shared {
     position: relative;
@@ -90,7 +90,7 @@
   .time-filter-group{display:flex;gap:3px;flex-wrap:wrap;}
   .time-btn{background-color:rgba(255,255,255,0.1);border:1px solid var(--border);color:#fff;padding:3px 7px;border-radius:4px;font-size:clamp(10px, 0.85vw, 13px);font-weight:bold;cursor:pointer;}
   .time-btn:hover,.time-btn.active{background-color:var(--main);color:#ffffff;}
-  .chart-container{position:relative;width:100%;flex:1;min-height:0;background:rgba(0,0,0,0.2);border-radius:6px;padding:4px;}
+  .chart-container{position:relative;width:100%;flex:1;min-height:220px;background:rgba(0,0,0,0.2);border-radius:6px;padding:4px;}
   
   .seo-info-card{padding:8px 12px;background:rgba(0, 0, 0, 0.5);border:1px solid var(--border);border-left:4px solid var(--main);border-radius:6px;flex-shrink:0;}
   .seo-info-card h2{font-size:clamp(12px, 1.1vw, 15px);color:var(--border) !important;margin-bottom:3px;font-weight:bold;}
@@ -100,7 +100,6 @@
   .error-msg{color:#f87171;}
   
   @media only screen and (max-width: 900px){
-    html,body{height:auto;overflow-y:auto;}
     .layout-wrapper{flex-direction:column;align-items:stretch;}
     .left-column,.right-column{width:100%;flex:none;height:auto;}
     .chart-container{height:250px;}
@@ -126,16 +125,19 @@
   .left-column:fullscreen .fullscreen-product-select-wrapper, .left-column:-webkit-full-screen .fullscreen-product-select-wrapper, .left-column:-moz-full-screen .fullscreen-product-select-wrapper { display: flex !important; align-items: center; gap: 6px; }
   .left-column:fullscreen .chart-box, .left-column:-webkit-full-screen .chart-box, .left-column:-moz-full-screen .chart-box { flex: 1; min-height: 0; }
 
+  /* Footer %100 Ekran Yüksekliğinin Dışında (Aşağı Kaydırılınca Görünecek) */
   .mobile-footer {
+    flex-shrink: 0;
     display: block;
-    padding: 15px 12px 20px 12px;
-    margin-top: 15px;
+    padding: 20px 15px 25px 15px;
+    margin-top: 30px;
     text-align: center;
-    background: rgba(0, 0, 0, 0.25);
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(0, 0, 0, 0.4);
+    border-top: 1px solid var(--border);
     color: #b0b3b8;
     font-size: 12px;
     line-height: 1.5;
+    width: 100%;
   }
   body:not(.dark-mode) .mobile-footer {
     background: #f8f9fa;
@@ -151,10 +153,10 @@
     border: 1px solid #e0e0e0;
     border-radius: 8px;
     overflow: hidden;
-    max-width: 100%;
+    max-width: 1200px;
+    margin: 15px auto 0 auto;
     background-color: #ffffff;
     box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-    margin: 10px 0;
     text-align: left;
   }
   .sarrafiye-bilesen-btn {
