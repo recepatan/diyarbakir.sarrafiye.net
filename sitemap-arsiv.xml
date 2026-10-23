@@ -5,10 +5,10 @@
     <loc>https://diyarbakir.sarrafiye.net/arsiv</loc>
     <priority>0.8</priority>
   </url>
-  <url>
+  
  
   <!-- Ürün Bazlı Arşiv Sayfaları -->
-   <loc>https://diyarbakir.sarrafiye.net/arsiv?urun=kur</loc>
+ <url>  <loc>https://diyarbakir.sarrafiye.net/arsiv?urun=kur</loc>
     <priority>0.7</priority>
   </url>
   <url>
