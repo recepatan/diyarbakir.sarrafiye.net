@@ -6,6 +6,7 @@
 <meta http-equiv="content-language" content="tr">
 <title id="pageMetaTitle">Diyarbakır Altın Fiyatları Arşivi</title>        
 <link href="https://diyarbakir.sarrafiye.net/favicon.ico" rel="icon" type="image/x-icon"/>
+<link rel="canonical" id="canonicalUrl" href="https://diyarbakir.sarrafiye.net/arsiv"/>
 <meta content="#fd3a13" name="theme-color"/>
 <meta content="Diyarbakır kuyumcu esnaflarından derlenen Diyarbakır Altın Fiyatları arşivi için web sitemizi ziyaret edebilirsiniz." id="metaDescription" name="description"/>
 <meta property="og:locale" content="tr_TR"/>
@@ -18,6 +19,28 @@
 <meta name="twitter:title" id="twitterTitle" content="Diyarbakır Altın Fiyatları Arşivi"/>
 <meta name="twitter:domain" content="diyarbakir.sarrafiye.net"/>
 <meta name="twitter:description" id="twitterDescription" content="Diyarbakır kuyumcu esnafından derlenen Diyarbakır Altın Fiyatları arşivi için web sitemizi ziyaret edebilirsiniz."/>
+
+<!-- AI & GEO Engine Structured Data (Schema.org JSON-LD) -->
+<script type="application/ld+json" id="schemaJSON">
+{
+  "@context": "https://schema.org",
+  "@type": "FinancialProduct",
+  "name": "Diyarbakır Altın Fiyatları Arşivi",
+  "description": "Diyarbakır Kuyumcular Derneği ve yerel kuyumcu esnafından derlenen geçmiş dönem gram altın, çeyrek, ziynet ve bilezik fiyatları arşivi.",
+  "category": "Gold / Commodity Market",
+  "provider": {
+    "@type": "LocalBusiness",
+    "name": "Diyarbakır Altın Fiyatları",
+    "url": "https://diyarbakir.sarrafiye.net"
+  },
+  "offers": {
+    "@type": "Offer",
+    "priceCurrency": "TRY",
+    "price": "0.00"
+  }
+}
+</script>
+
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> 
 <style>
   .blink-dot { height: 8px; width: 8px; background-color: #2ecc71; border-radius: 50%; display: inline-block; margin-right: 8px; animation: blinker 1.5s linear infinite; }
@@ -125,7 +148,6 @@
   .left-column:fullscreen .fullscreen-product-select-wrapper, .left-column:-webkit-full-screen .fullscreen-product-select-wrapper, .left-column:-moz-full-screen .fullscreen-product-select-wrapper { display: flex !important; align-items: center; gap: 6px; }
   .left-column:fullscreen .chart-box, .left-column:-webkit-full-screen .chart-box, .left-column:-moz-full-screen .chart-box { flex: 1; min-height: 0; }
 
-  /* Footer %100 Ekran Yüksekliğinin Dışında (Aşağı Kaydırılınca Görünecek) */
   .mobile-footer {
     flex-shrink: 0;
     display: block;
@@ -748,6 +770,12 @@ $(document).ready(function() {
       if (twitterDescription) twitterDescription.setAttribute('content', descText);
       if (ogUrl) ogUrl.setAttribute('content', window.location.href);
 
+      // --- Canonical Link Dinamik Güncellemesi ---
+      const canonicalTag = document.getElementById('canonicalUrl');
+      if (canonicalTag) {
+        canonicalTag.setAttribute('href', window.location.href);
+      }
+
       const cardProdName = (selectedProductKey === 'KUR') ? 'Altın Piyasası' : getSelectedProductName();
       const timePart = timeStr ? ` Saat ${timeStr}` : '';
       
@@ -794,6 +822,48 @@ $(document).ready(function() {
           <span><strong>En Düşük (A/S):</strong> ${fmt(minBuy)} / ${fmt(minSell)} TL</span>
           <span><strong>En Yüksek (A/S):</strong> ${fmt(maxBuy)} / ${fmt(maxSell)} TL</span>
         `;
+      }
+
+      // --- AI & GEO Engine Structured Data (JSON-LD) Anlık Güncellemesi ---
+      const schemaScript = document.getElementById('schemaJSON');
+      if (schemaScript) {
+        const schemaData = {
+          "@context": "https://schema.org",
+          "@type": "FinancialProduct",
+          "name": pageTitleText,
+          "description": descText,
+          "category": "Gold Market / Currency Archive",
+          "url": window.location.href,
+          "provider": {
+            "@type": "LocalBusiness",
+            "name": "Diyarbakır Altın Fiyatları",
+            "url": "https://diyarbakir.sarrafiye.net"
+          },
+          "offers": {
+            "@type": "AggregateOffer",
+            "priceCurrency": "TRY",
+            "lowPrice": Math.round(minBuy),
+            "highPrice": Math.round(maxSell),
+            "offerCount": daySlice.length || 1,
+            "offers": [
+              {
+                "@type": "Offer",
+                "name": `${cardProdName} Alış`,
+                "price": Math.round(currentBuy),
+                "priceCurrency": "TRY",
+                "validFrom": `${targetDateIso}T00:00:00Z`
+              },
+              {
+                "@type": "Offer",
+                "name": `${cardProdName} Satış`,
+                "price": Math.round(currentSell),
+                "priceCurrency": "TRY",
+                "validFrom": `${targetDateIso}T00:00:00Z`
+              }
+            ]
+          }
+        };
+        schemaScript.textContent = JSON.stringify(schemaData, null, 2);
       }
     }
 
