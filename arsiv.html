@@ -1,0 +1,1053 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta http-equiv="content-language" content="tr">
+<title id="pageMetaTitle">Bingöl Altın Fiyatları Arşivi</title>        
+<link href="https://bingol.sarrafiye.net/favicon.ico" rel="icon" type="image/x-icon"/>
+<meta content="#fd3a13" name="theme-color"/>
+<meta content="Bingöl kuyumcu esnaflarından derlenen Bingöl Altın Fiyatları arşivi için web sitemizi ziyaret edebilirsiniz." id="metaDescription" name="description"/>
+<meta property="og:locale" content="tr_TR"/>
+<meta property="og:type" content="website"/>
+<meta property="og:title" id="ogTitle" content="Bingöl Altın Fiyatları Arşivi"/>
+<meta property="og:description" id="ogDescription" content="Bingöl kuyumcu esnafından derlenen Bingöl Altın Fiyatları arşivi için web sitemizi ziyaret edebilirsiniz."/>
+<meta property="og:url" id="ogUrl" content="https://bingol.sarrafiye.net/arsiv"/>
+<meta property="og:site_name" content="Bingöl Altın Fiyatları"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" id="twitterTitle" content="Bingöl Altın Fiyatları Arşivi"/>
+<meta name="twitter:domain" content="bingol.sarrafiye.net"/>
+<meta name="twitter:description" id="twitterDescription" content="Bingöl kuyumcu esnafından derlenen Bingöl Altın Fiyatları arşivi için web sitemizi ziyaret edebilirsiniz."/>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script> 
+<style>
+  .blink-dot { height: 8px; width: 8px; background-color: #2ecc71; border-radius: 50%; display: inline-block; margin-right: 8px; animation: blinker 1.5s linear infinite; }
+  @keyframes blinker { 50% { opacity: 0; } }
+  .cookie-choices-info{display:none !important;}
+  :root{--main:#008a07;--border:#ffa500;}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html,body{height:100%;}
+  body{background:radial-gradient(circle, #1a1a1a 0%, #000 100%);color:white;font-family:Arial;display:flex;flex-direction:column;overflow-x:hidden;}
+  nav{background:linear-gradient(180deg, var(--main) 0%, #000 100%);min-height:55px;max-height:10vh;display:flex;align-items:center;padding:0 15px;border-bottom:2px solid var(--border);z-index:10;flex-shrink:0;}
+  .logo-area{display:flex;align-items:center;gap:12px;}
+  .logo-img{height:35px;cursor:pointer;}
+  .theme-bar{display:flex;gap:8px;background:rgba(255,255,255,0.1);padding:5px 10px;border-radius:20px;border:1px solid var(--border);align-items:center;}
+  .dot{width:20px;height:20px;border-radius:50%;cursor:pointer;border:2px solid #fff;}
+  #tarih_alan{font-size:clamp(12px, 1.2vw, 16px);font-weight:bold;color:white;}
+  #fiyat_zaman_doviz{font-size:clamp(14px, 1.5vw, 20px);font-weight:bold;color:var(--border);}
+  
+  .main-content{flex:1;display:flex;flex-direction:column;padding:10px;gap:10px;max-width:1400px;margin:0 auto;width:100%;min-height:0;}
+  .layout-wrapper{display:flex;gap:15px;width:100%;flex:1;min-height:0;align-items:stretch;}
+  .left-column{flex:1;display:flex;flex-direction:column;gap:8px;min-width:0;min-height:0;justify-content:space-between;}
+  .right-column{flex:1;display:flex;flex-direction:column;gap:8px;min-width:0;min-height:0;justify-content:space-between;}
+  
+  .chart-box{background:rgba(255, 255, 255, 0.03);border:2px solid var(--main);border-radius:8px;padding:8px;display:flex;flex-direction:column;gap:6px;flex:1;min-height:0;}
+  .table-container-box{background:rgba(255, 255, 255, 0.03);border:2px solid var(--main);border-radius:8px;padding:6px;display:flex;flex-direction:column;flex:1;min-height:0;overflow:hidden;}
+  
+  /* Çakışmayı önleyen güvenli reklam konteynırları */
+  .ad-container-shared {
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 6px 0;
+    flex-shrink: 0;
+  }
+  @media (min-width: 769px) {
+    .ad-container-shared {
+      border: 1px solid var(--border);
+      background-color: #111827;
+      min-height: 90px;
+    }
+  }
+  .mobile-extra-ad {
+    width: 100%;
+    margin: 12px 0;
+    display: flex;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .ayar-table,.has-table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--main);border-radius:6px;overflow:hidden;font-weight:bold;table-layout:fixed;flex:1;}
+  .ayar-table th,.has-table th{background:var(--main);color:white;text-align:left;padding-left:10px;font-size:clamp(11px, 1.05vw, 15px);border-bottom:2px solid var(--border);height:clamp(24px, 2.8vh, 36px);}
+  .ayar-table td,.has-table td{color:#000;padding-left:10px;border-bottom:1px solid #eee;font-size:clamp(12px, 1.15vw, 16px);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;height:clamp(24px, 2.8vh, 36px);line-height:1;}
+  .ayar-table tbody tr,.has-table tbody tr{cursor:pointer;transition:background 0.2s;}
+  .ayar-table tbody tr:hover,.has-table tbody tr:hover{background-color:#f1f5f9;}
+  .ayar-table tbody tr.active-row,.has-table tbody tr.active-row{background-color:#fef3c7 !important;}
+  .ayar-table tbody tr.kur-row,.has-table tbody tr.kur-row{background-color:#fffbeb;}
+  
+  .date-filter-wrapper{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:6px;background:rgba(0, 0, 0, 0.4);border:1px solid var(--border);padding:6px 12px;border-radius:8px;flex-shrink:0;}
+  .date-label-group{display:flex;align-items:center;gap:6px;color:#fff;font-size:clamp(11px, 1vw, 15px);font-weight:bold;}
+  .date-label-group svg{width:15px;height:15px;fill:var(--border);}
+  .modern-date-container{position:relative;display:inline-flex;align-items:center;}
+  #datePicker{position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;cursor:pointer;z-index:2;}
+  .date-display-btn{display:inline-flex;align-items:center;gap:6px;background:#ffffff;border:1px solid var(--border);color:#000;padding:4px 10px;border-radius:6px;font-size:clamp(11px, 0.95vw, 14px);font-weight:bold;z-index:1;pointer-events:none;}
+  
+  .chart-header{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:4px;flex-shrink:0;}
+  .chart-title{font-size:clamp(12px, 1.15vw, 16px);font-weight:bold;color:var(--border);}
+  .time-filter-group{display:flex;gap:3px;flex-wrap:wrap;}
+  .time-btn{background-color:rgba(255,255,255,0.1);border:1px solid var(--border);color:#fff;padding:3px 7px;border-radius:4px;font-size:clamp(10px, 0.85vw, 13px);font-weight:bold;cursor:pointer;}
+  .time-btn:hover,.time-btn.active{background-color:var(--main);color:#ffffff;}
+  .chart-container{position:relative;width:100%;flex:1;min-height:0;background:rgba(0,0,0,0.2);border-radius:6px;padding:4px;}
+  
+  .seo-info-card{padding:8px 12px;background:rgba(0, 0, 0, 0.5);border:1px solid var(--border);border-left:4px solid var(--main);border-radius:6px;flex-shrink:0;}
+  .seo-info-card h2{font-size:clamp(12px, 1.1vw, 15px);color:var(--border) !important;margin-bottom:3px;font-weight:bold;}
+  .seo-info-card p{font-size:clamp(11px, 0.9vw, 13px);line-height:1.3;color:#ffffff !important;margin-bottom:5px;opacity:1 !important;}
+  .seo-stats-badge{display:flex;gap:10px;padding:4px 8px;background:rgba(255, 255, 255, 0.1);border-radius:4px;font-size:clamp(10px, 0.85vw, 12px);flex-wrap:wrap;color:#ffffff !important;font-weight:bold;}
+  .status-msg{padding:20px;text-align:center;color:#fff;font-size:1.2vw;background:rgba(0,0,0,0.4);border-radius:8px;margin:auto;}
+  .error-msg{color:#f87171;}
+  
+  @media only screen and (max-width: 900px){
+    html,body{height:auto;overflow-y:auto;}
+    .layout-wrapper{flex-direction:column;align-items:stretch;}
+    .left-column,.right-column{width:100%;flex:none;height:auto;}
+    .chart-container{height:250px;}
+    .ayar-table,.has-table{flex:none;}
+  }
+  
+  #dark_toggle_btn{background:transparent;border:none;color:white;border-radius:50%;width:22px;height:22px;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;font-size:16px;padding:0;margin:0;line-height:1;transition:transform 0.2s;}
+  #dark_toggle_btn:hover{transform:scale(1.2);}
+  .live-btn{background:transparent;border:none;color:white;width:22px;height:22px;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;font-size:15px;padding:0;margin:0;line-height:1;transition:transform 0.2s;text-decoration:none;}
+  .live-btn:hover{transform:scale(1.2);}
+  .ayar-table tbody tr.active-row td{color:#000 !important;}
+  body.dark-mode .ayar-table,body.dark-mode .has-table{background:#1e1e1e !important;}
+  body.dark-mode .ayar-table td,body.dark-mode .has-table td{color:#ffffff !important;border-bottom:1px solid #333 !important;}
+  body.dark-mode .ayar-table tbody tr:hover,body.dark-mode .has-table tbody tr:hover{background-color:#2a2a2a !important;}
+  body.dark-mode .ayar-table tbody tr.active-row,body.dark-mode .has-table tbody tr.active-row{background-color:#451a03 !important;}
+  body.dark-mode .ayar-table tbody tr.active-row td{color:#ffffff !important;}
+  body.dark-mode .ayar-table tbody tr.kur-row,body.dark-mode .has-table tbody tr.kur-row{background-color:#292524 !important;}
+
+  .fullscreen-product-select-wrapper { display: none !important; }
+
+  .left-column:fullscreen, .left-column:-webkit-full-screen, .left-column:-moz-full-screen { background: #000; padding: 15px; display: flex; flex-direction: column; width: 100vw; height: 100vh; box-sizing: border-box; }
+  .left-column:fullscreen .seo-info-card, .left-column:-webkit-full-screen .seo-info-card, .left-column:-moz-full-screen .seo-info-card { display: none !important; }
+  .left-column:fullscreen .fullscreen-product-select-wrapper, .left-column:-webkit-full-screen .fullscreen-product-select-wrapper, .left-column:-moz-full-screen .fullscreen-product-select-wrapper { display: flex !important; align-items: center; gap: 6px; }
+  .left-column:fullscreen .chart-box, .left-column:-webkit-full-screen .chart-box, .left-column:-moz-full-screen .chart-box { flex: 1; min-height: 0; }
+
+  .mobile-footer {
+    display: block;
+    padding: 15px 12px 20px 12px;
+    margin-top: 15px;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.25);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    color: #b0b3b8;
+    font-size: 12px;
+    line-height: 1.5;
+  }
+  body:not(.dark-mode) .mobile-footer {
+    background: #f8f9fa;
+    border-top: 1px solid #dadce0;
+    color: #5f6368;
+  }
+  .mobile-footer-seo { margin-bottom: 8px; }
+  .mobile-footer-seo strong { color: var(--border); }
+  .mobile-footer-copy { font-size: 11px; font-weight: 600; opacity: 0.8; margin-bottom: 10px; }
+
+  .sarrafiye-bilesen {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    overflow: hidden;
+    max-width: 100%;
+    background-color: #ffffff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    margin: 10px 0;
+    text-align: left;
+  }
+  .sarrafiye-bilesen-btn {
+    width: 100%;
+    padding: 12px 16px;
+    background-color: #f8f9fa;
+    color: #333333;
+    font-size: 14px;
+    font-weight: 600;
+    border: none;
+    outline: none;
+    text-align: left;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.2s ease;
+  }
+  .sarrafiye-bilesen-btn:hover {
+    background-color: #f1f3f5;
+  }
+  .sarrafiye-bilesen-icon {
+    font-size: 12px;
+    transition: transform 0.3s ease;
+  }
+  .sarrafiye-bilesen-btn.active .sarrafiye-bilesen-icon {
+    transform: rotate(180deg);
+  }
+  .sarrafiye-bilesen-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s cubic-bezier(0, 1, 0, 1);
+    background-color: #ffffff;
+  }
+  .sarrafiye-bilesen-links {
+    list-style: none;
+    padding: 14px 16px;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 10px 14px;
+    border-top: 1px solid #eeeeee;
+  }
+  .sarrafiye-bilesen-links a {
+    color: #495057;
+    text-decoration: none;
+    font-size: 13.5px;
+    display: block;
+    transition: color 0.2s ease;
+  }
+  .sarrafiye-bilesen-links a:hover {
+    color: #d4af37;
+    text-decoration: underline;
+  }
+</style>
+</head>
+<body>
+
+<!-- 1. Reklasyol Alanı: Header Üstü (reklam.json: ad_head) -->
+<div id="ad-slot-head"></div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.socket.io/4.4.1/socket.io.min.js"></script>
+<script> 
+function toggleDarkMode() {
+    var body = document.body;
+    var btn = document.getElementById('dark_toggle_btn');
+    body.classList.toggle('dark-mode');
+    if (body.classList.contains('dark-mode')) {
+        btn.innerHTML = '🌟';
+        localStorage.setItem('gece_modu', 'acik');
+    } else {
+        btn.innerHTML = '🌙';
+        localStorage.setItem('gece_modu', 'kapali');
+    }
+}
+
+function setT(mainColor, borderColor) { 
+    document.documentElement.style.setProperty('--main', mainColor); 
+    document.documentElement.style.setProperty('--border', borderColor); 
+    localStorage.setItem('secilen_ana_renk', mainColor);
+    localStorage.setItem('secilen_kenar_renk', borderColor);
+}
+
+function updateClock() { 
+    var now = new Date(); 
+    var days = ["Pazar", "Pazartesi", "Salı", "Çarşamba", "Perşembe", "Cuma", "Cumartesi"]; 
+    var months = ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"]; 
+    var t = document.getElementById('tarih_alan'); 
+    var z = document.getElementById('fiyat_zaman_doviz');
+    if(t) t.innerText = now.getDate() + " " + months[now.getMonth()] + " " + now.getFullYear() + ", " + days[now.getDay()]; 
+    if(z && !window.isLiveSocketActive) z.innerText = String(now.getHours()).padStart(2,'0') + ":" + String(now.getMinutes()).padStart(2,'0') + ":" + String(now.getSeconds()).padStart(2,'0');
+} 
+
+$(document).ready(function() { 
+    var kayitliAnaRenk = localStorage.getItem('secilen_ana_renk');
+    var kayitliKenarRenk = localStorage.getItem('secilen_kenar_renk');
+    if (kayitliAnaRenk && kayitliKenarRenk) {
+        document.documentElement.style.setProperty('--main', kayitliAnaRenk);
+        document.documentElement.style.setProperty('--border', kayitliKenarRenk);
+    }
+    var geceModuDurumu = localStorage.getItem('gece_modu');
+    if (geceModuDurumu === 'acik') {
+        document.body.classList.add('dark-mode');
+        document.getElementById('dark_toggle_btn').innerHTML = '🌟';
+    } else {
+        document.getElementById('dark_toggle_btn').innerHTML = '🌙';
+    }
+    updateClock(); 
+    setInterval(updateClock, 1000);
+});
+</script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+
+<nav> 
+    <div style="width:100%; display:flex; justify-content:space-between; align-items:center;"> 
+        <div class="logo-area"> 
+            <a href="/" title="Bingöl Altın Fiyatları">
+                <img src="bingol-altin-fiyatlari.png" class="logo-img" alt="Bingöl Altın Fiyatları Logo"> 
+            </a>
+            <div class="theme-bar"> 
+               <a href="/" class="live-btn" title="Bingöl Altın Fiyatları Canlı Piyasa Ekranına Dön">
+                  <i class="bi bi-broadcast text-success" style="animation: blinker 1.5s linear infinite;"></i>
+               </a>
+               <button id="dark_toggle_btn" onclick="toggleDarkMode()">🌙</button> 
+                <div class="dot" style="background:#008a07" onclick="setT('#008a07','#ffa500')"></div> 
+                <div class="dot" style="background:#1a1a1a" onclick="setT('#1a1a1a','#d4af37')"></div> 
+                <div class="dot" style="background:#b22222" onclick="setT('#b22222','#ffd700')"></div> 
+                <div class="dot" style="background:#4b0082" onclick="setT('#4b0082','#da70d6')"></div> 
+                <div class="dot" style="background:#444" onclick="setT('#444','#888')"></div> 
+            </div> 
+        </div> 
+        <div style="text-align:right"> 
+            <div id="tarih_alan">--.--.----</div> 
+            <div id="fiyat_zaman_doviz">00:00:00</div> 
+        </div> 
+    </div> 
+</nav>
+
+<div class="main-content">
+    <div id="status" class="status-msg">Veriler ve arşiv yükleniyor...</div>    
+    <div id="results" style="display: none; width: 100%; height: 100%; flex-direction: column;">      
+        <div class="layout-wrapper">
+            <div class="left-column">
+                <div class="chart-box">
+                    <div class="chart-header">
+                        <div class="chart-title" id="chartTitle">Fiyat Trend Grafiği</div>
+                        <div class="time-filter-group">
+                            <button class="time-btn active" onclick="setChartRange('today', event)">1G</button>
+                            <button class="time-btn" onclick="setChartRange('week', event)">1H</button>
+                            <button class="time-btn" onclick="setChartRange('month', event)">1A</button>
+                            <button class="time-btn" onclick="setChartRange('year', event)">1Y</button>
+                            <button class="time-btn" onclick="setChartRange('all', event)">5Y</button>
+                            <button class="time-btn" onclick="toggleFullScreen()" title="Tam Ekran Yap/Çık"><i class="bi bi-arrows-fullscreen"></i></button>
+                        </div>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="priceChart"></canvas>
+                    </div>
+                </div>
+                <div class="date-filter-wrapper">
+                    <div class="date-label-group">
+                        <svg viewBox="0 0 24 24"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zM9 14H7v-2h2v2zm4 0h-2v-2h2v2zm4 0h-2v-2h2v2zm-8 4H7v-2h2v2zm4 0h-2v-2h2v2zm4 0h-2v-2h2v2z"/></svg>
+                        <span>Arşiv Tarihi:</span>
+                    </div>          
+                    <div style="display: flex; align-items: center; gap: 6px; flex-wrap: wrap;">
+                        <div class="modern-date-container">
+                            <input type="date" id="datePicker" disabled />
+                            <div class="date-display-btn" id="dateDisplayBtn">
+                                <span id="dateTextValue">Seçiniz</span>
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                            </div>
+                        </div>
+                        <select id="timeSelect" style="background:#ffffff; border:1px solid var(--border); color:#000; padding:4px 8px; border-radius:6px; font-size:clamp(11px, 0.95vw, 14px); font-weight:bold; cursor:pointer;" disabled>
+                            <option value="">Saat</option>
+                        </select>
+                        <div class="fullscreen-product-select-wrapper">
+                            <select id="fullscreenProductSelect" style="background:#ffffff; border:1px solid var(--border); color:#000; padding:4px 8px; border-radius:6px; font-size:clamp(11px, 0.95vw, 14px); font-weight:bold; cursor:pointer;">
+                                <option value="KUR">Altın</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <article class="seo-info-card" id="seoInfoCard">
+                    <h2 id="seoCardTitle">📌 Bingöl Kuyumcu Piyasası ve Altın Arşivi</h2>
+                    <p id="seoCardContent">Bingöl kuyumcu esnafından ve serbest piyasa dinamiklerinden derlenen altın fiyatları arşivi...</p>
+                    <div class="seo-stats-badge" id="seoStatsBadge">
+                      <span><strong>Alış:</strong> -- TL</span>
+                      <span><strong>Satış:</strong> -- TL</span>
+                      <span><strong>Makas:</strong> -- TL</span>
+                      <span><strong>Gün İçi En Düşük:</strong> --</span>
+                      <span><strong>Gün İçi En Yüksek:</strong> --</span>
+                    </div>
+                </article>
+            </div>
+            
+            <div class="right-column">
+                <div class="table-container-box" style="flex: 0 0 auto;">
+                    <table class="has-table">
+                        <thead><tr><th>KUR</th><th>ALIŞ</th><th>SATIŞ</th></tr></thead>
+                        <tbody id="marketTableBody"></tbody>
+                    </table>
+                </div>
+
+                <!-- 2. Reklam Alanı: Sağ Sütun İçi - Tablolar Arası Güvenli Mesafe (reklam.json: ad_kutu2) -->
+                <div class="ad-container-shared" id="ad-slot-kutu2"></div>
+
+                <div class="table-container-box" style="flex: 1;">
+                    <table class="ayar-table">
+                        <thead><tr><th>ÜRÜNLER</th><th>ALIŞ (TL)</th><th>SATIŞ (TL)</th></tr></thead>
+                        <tbody id="productTableBody"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. Reklam Alanı: Mobil Akış Alt Bölüm 1 (reklam.json: ad_mobile_2) -->
+        <div class="mobile-extra-ad" id="ad-slot-mobile-2"></div>
+        <!-- 4. Reklam Alanı: Mobil Akış Alt Bölüm 2 (reklam.json: ad_mobile_3) -->
+        <div class="mobile-extra-ad" id="ad-slot-mobile-3"></div>
+    </div>
+</div>
+
+<!-- Footer ve İllere Göre Altın Fiyatları Bileşeni -->
+<footer class="mobile-footer">
+  <p class="mobile-footer-seo">
+    <strong>Bingöl Altın Fiyatları Arşivi:</strong> Bingöl Kuyumcular Derneği ve lokal kuyumcu esnafından derlenen geçmiş dönem gram altın, çeyrek, ziynet ve bilezik fiyatları değişim grafiklerini inceleyebilirsiniz.
+  </p>
+  <div class="mobile-footer-copy">
+    © 2026 <a href="/" title="Bingöl Altın Fiyatları" style="color:inherit; text-decoration:underline;">Bingöl Altın Fiyatları</a> (bingol.sarrafiye.net) - Tüm Hakları Saklıdır.
+  </div>
+  
+  <div class="sarrafiye-bilesen">
+    <button class="sarrafiye-bilesen-btn" id="sarrafiyeToggleBtn" onclick="toggleSarrafiyeBilesen()">
+      <span>İllere Göre Altın Fiyatları</span>
+      <span class="sarrafiye-bilesen-icon">▼</span>
+    </button>
+
+    <div class="sarrafiye-bilesen-content" id="sarrafiyeContent">
+      <ul class="sarrafiye-bilesen-links">
+        <li><a href="/" title="Bingöl Altın Fiyatları" style="font-weight:bold; color:var(--main);">Bingöl Altın Fiyatları (Ana Sayfa)</a></li>
+        <li><a href="https://adana.sarrafiye.net" title="Adana Altın Fiyatları">Adana Altın Fiyatları</a></li>
+        <li><a href="https://amasya.sarrafiye.net" title="Amasya Sarraflar">Amasya Sarraflar</a></li>
+        <li><a href="https://bingol.sarrafiye.net" title="Bingöl Altın Fiyatları">Bingöl Altın Fiyatları</a></li>
+        <li><a href="https://bursa.sarrafiye.net" title="Bursa Altın Fiyatları">Bursa Altın Fiyatları</a></li>
+        <li><a href="https://diyarbakir.sarrafiye.net" title="Diyarbakır Altın Fiyatları">Diyarbakır Altın Fiyatları</a></li>
+        <li><a href="https://elazig.sarrafiye.net" title="Elazığ Altın Fiyatları">Elazığ Altın Fiyatları</a></li>
+        <li><a href="https://erzurum.sarrafiye.net" title="Erzurum Altın Fiyatları">Erzurum Altın Fiyatları</a></li>
+        <li><a href="https://kapalicarsi.sarrafiye.net" title="Kapalıçarşı Altın Fiyatları">Kapalıçarşı Altın Fiyatları</a></li>
+        <li><a href="https://malatya.sarrafiye.net" title="Malatya Altın Fiyatları">Malatya Altın Fiyatları</a></li>
+        <li><a href="https://mardin.sarrafiye.net" title="Mardin Altın Fiyatları">Mardin Altın Fiyatları</a></li>
+        <li><a href="https://mersin.sarrafiye.net" title="Mersin Altın Fiyatları">Mersin Altın Fiyatları</a></li>
+        <li><a href="https://sanliurfa.sarrafiye.net" title="Şanlıurfa Altın Fiyatları">Şanlıurfa Altın Fiyatları</a></li>
+        <li><a href="https://van.sarrafiye.net" title="Van Altın Fiyatları">Van Altın Fiyatları</a></li>
+      </ul>
+    </div>
+
+    <script>
+      function toggleSarrafiyeBilesen() {
+        const btn = document.getElementById('sarrafiyeToggleBtn');
+        const content = document.getElementById('sarrafiyeContent');
+        
+        btn.classList.toggle('active');
+        
+        if (content.style.maxHeight && content.style.maxHeight !== '0px') {
+          content.style.maxHeight = '0px';
+        } else {
+          content.style.maxHeight = content.scrollHeight + 'px';
+        }
+      }
+    </script>
+  </div>
+</footer>
+
+<script>
+    /* Dinamik Merkezi Reklam Servisi (reklam.json) */
+    async function loadAdsFromCentralServer() {
+      try {
+        const response = await fetch('https://api.sarrafiye.net/reklam.json', { cache: 'no-cache' });
+        if (!response.ok) return;
+        
+        const data = await response.json();
+        const ads = data.ads || {};
+
+        if (ads.ad_head) injectAdCode('#ad-slot-head', ads.ad_head);
+        if (ads.ad_kutu2) injectAdCode('#ad-slot-kutu2', ads.ad_kutu2);
+        if (ads.ad_mobile_2) injectAdCode('#ad-slot-mobile-2', ads.ad_mobile_2);
+        if (ads.ad_mobile_3) injectAdCode('#ad-slot-mobile-3', ads.ad_mobile_3);
+      } catch (e) {
+        console.error("Merkezi reklam servisi yüklenemedi:", e);
+      }
+    }
+
+    function injectAdCode(selector, adHtml) {
+      if (!adHtml) return;
+      const container = document.querySelector(selector);
+      if (!container) return;
+
+      container.innerHTML = adHtml;
+
+      container.querySelectorAll('script').forEach(oldScript => {
+        const newScript = document.createElement('script');
+        Array.from(oldScript.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value));
+        if (oldScript.innerHTML) newScript.innerHTML = oldScript.innerHTML;
+        oldScript.parentNode.replaceChild(newScript, oldScript);
+      });
+    }
+
+    let archiveData = null;
+    let multipliers = {};
+    let socketSettings = {};
+    let priceChart = null;
+    let currentRecordIndex = -1;
+    let currentRange = 'today';
+    let selectedProductKey = 'KUR';
+    let socket = null;
+    window.isLiveSocketActive = false;
+
+    const datePicker = document.getElementById('datePicker');
+    const timeSelect = document.getElementById('timeSelect');
+    const fullscreenProductSelect = document.getElementById('fullscreenProductSelect');
+    const dateTextValue = document.getElementById('dateTextValue');
+    const statusDiv = document.getElementById('status');
+    const resultsDiv = document.getElementById('results');
+    const marketTableBody = document.getElementById('marketTableBody');
+    const productTableBody = document.getElementById('productTableBody');
+    const chartTitle = document.getElementById('chartTitle');
+    const pageMetaTitle = document.getElementById('pageMetaTitle');
+    const metaDescription = document.getElementById('metaDescription');
+    const ogTitle = document.getElementById('ogTitle');
+    const ogUrl = document.getElementById('ogUrl');
+    const ogDescription = document.getElementById('ogDescription');
+    const twitterTitle = document.getElementById('twitterTitle');
+    const twitterDescription = document.getElementById('twitterDescription');
+    const seoCardTitle = document.getElementById('seoCardTitle');
+    const seoCardContent = document.getElementById('seoCardContent');
+    const seoStatsBadge = document.getElementById('seoStatsBadge');
+    
+    function fmt(n) {
+      if (isNaN(n) || n === 0) return "0";
+      return Math.round(n).toLocaleString('tr-TR', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
+    }
+    function slugify(text) {
+      if (!text) return '';
+      return text.toString().toLowerCase()
+        .replace(/ğ/g, 'g').replace(/ü/g, 'u').replace(/ş/g, 's')
+        .replace(/ı/g, 'i').replace(/ö/g, 'o').replace(/ç/g, 'c')
+        .replace(/[^a-z0-9 -]/g, '').replace(/\s+/g, '-').replace(/-+/g, '-');
+    }
+    function getUrlParams() {
+      const params = new URLSearchParams(window.location.search);
+      return { tarih: params.get('tarih'), urun: params.get('urun'), tip: params.get('tip') };
+    }
+    function getSelectedProductName() {
+      if (selectedProductKey === 'KUR') return 'Altın';
+      return multipliers[selectedProductKey] ? multipliers[selectedProductKey].name : 'Altın';
+    }
+    function formatDateTR(isoDate) {
+      if (!isoDate) return "";
+      const parts = isoDate.split('-');
+      if (parts.length === 3) return `${parts[2]}.${parts[1]}.${parts[0]}`;
+      return isoDate;
+    }
+    function formatLongDateTR(isoDate) {
+      if (!isoDate) return "";
+      const parts = isoDate.split('-');
+      if (parts.length !== 3) return isoDate;
+      const monthsLong = ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"];
+      const day = parseInt(parts[2], 10);
+      const monthIndex = parseInt(parts[1], 10) - 1;
+      const year = parts[0];
+      if (monthIndex >= 0 && monthIndex < 12) {
+        return `${day} ${monthsLong[monthIndex]} ${year}`;
+      }
+      return isoDate;
+    }
+    function normalizeToISO(dateStr) {
+      if (!dateStr) return '';
+      if (dateStr.includes('-') && dateStr.split('-')[0].length === 4) return dateStr;
+      const parts = dateStr.split(/[\.-]/);
+      if (parts.length === 3) {
+        if (parts[0].length === 4) return `${parts[0]}-${parts[1].padStart(2,'0')}-${parts[2].padStart(2,'0')}`;
+        return `${parts[2]}-${parts[1].padStart(2,'0')}-${parts[0].padStart(2,'0')}`;
+      }
+      return dateStr;
+    }
+    function formatDateFormats(isoDateStr) {
+      const parts = isoDateStr.split('-');
+      if (parts.length !== 3) return [isoDateStr];
+      const [year, month, day] = parts;
+      return [`${year}-${month}-${day}`, `${day}.${month}.${year}`, `${day}-${month}-${year}`, `${parseInt(day, 10)}.${parseInt(month, 10)}.${year}`];
+    }
+
+    function parseGoogleSheetsData(values) {
+      if (!values || !Array.isArray(values)) return null;
+      const products = {};
+      for (let i = 0; i < values.length; i++) {
+        let ad = values[i][0];
+        let mAl = parseFloat(String(values[i][1]).replace(',', '.'));
+        let mSat = parseFloat(String(values[i][2]).replace(',', '.'));
+        if (ad) {
+          const keyName = ad.trim();
+          const cleanKey = keyName.toLowerCase();
+          if (['kur', 'fark', 'dolar', 'euro', 'ons', 'ürün adı'].includes(cleanKey)) continue;
+          if (!isNaN(mAl) && !isNaN(mSat)) {
+            products[cleanKey] = { name: keyName, mAl: mAl, mSat: mSat };
+          }
+        }
+      }
+      return products;
+    }
+
+    async function loadSheetData() {
+      const sheetUrl = `https://ayarlar.bingolder.com/bingol`;
+      const res = await fetch(sheetUrl);
+      if (!res.ok) throw new Error('Katsayı verisi bulunamadı.');
+      const sheetJson = await res.json();
+      const v = sheetJson.values;
+      socketSettings = {
+        fal: parseFloat(v[18]?.[1]) || 0,
+        fsat: parseFloat(v[18]?.[2]) || 0,
+        verial: parseFloat(v[20]?.[2]) || 1
+      };
+      return parseGoogleSheetsData(v);
+    }
+
+    async function initData() {
+      try {
+        const urlParams = getUrlParams();
+        statusDiv.style.display = 'block';
+        resultsDiv.style.display = 'none';
+        statusDiv.className = 'status-msg';
+        statusDiv.innerText = 'Veriler yükleniyor...';
+        
+        if (!archiveData) {
+          const archiveRes = await fetch('https://api.sarrafiye.net/altin_arsiv.json');
+          if (!archiveRes.ok) throw new Error('Arşiv verisi alınamadı.');
+          archiveData = await archiveRes.json();
+        }
+        multipliers = await loadSheetData();
+        if (!multipliers || Object.keys(multipliers).length === 0) {
+          throw new Error('Google Sheets katsayı verisi okunamadı.');
+        }
+
+        fullscreenProductSelect.innerHTML = '<option value="KUR">Altın</option>';
+        Object.keys(multipliers).forEach(key => {
+          const opt2 = document.createElement('option');
+          opt2.value = key;
+          opt2.innerText = multipliers[key].name;
+          fullscreenProductSelect.appendChild(opt2);
+        });
+
+        if (urlParams.urun) {
+          const foundKey = Object.keys(multipliers).find(key => slugify(multipliers[key].name) === urlParams.urun);
+          selectedProductKey = foundKey ? foundKey : 'KUR';
+        } else {
+          selectedProductKey = 'KUR';
+        }
+        fullscreenProductSelect.value = selectedProductKey;
+
+        datePicker.disabled = false;
+        let targetDate = '';
+
+        if (urlParams.tip === 'canli') {
+          window.isLiveSocketActive = true;
+          if (archiveData.length > 0) {
+            const lastItem = archiveData[archiveData.length - 1];
+            targetDate = normalizeToISO(lastItem.tarih || lastItem.date || lastItem.Tarih);
+          }
+          handleDateChange(targetDate, '', false, false);
+          connectSocket();
+        } else {
+          if (urlParams.tarih) {
+            targetDate = urlParams.tarih;
+            datePicker.value = targetDate;
+            handleDateChange(targetDate, '', false, false);
+          } else {
+            if (archiveData.length > 0) {
+              const lastItem = archiveData[archiveData.length - 1];
+              targetDate = normalizeToISO(lastItem.tarih || lastItem.date || lastItem.Tarih);
+              datePicker.value = targetDate;
+              handleDateChange(targetDate, '', false, false);
+            } else {
+              statusDiv.style.display = 'none';
+              resultsDiv.style.display = 'none';
+              statusDiv.className = 'status-msg';
+              statusDiv.innerText = 'Lütfen arşivden bir tarih seçiniz.';
+            }
+          }
+        }
+        loadAdsFromCentralServer();
+      } catch (err) {
+        statusDiv.className = 'status-msg error-msg';
+        statusDiv.innerText = 'Hata: ' + err.message;
+      }
+    }
+
+    function connectSocket() {
+      if (socket) { socket.off(); socket.disconnect(); }
+      var _u = atob("d3NzOi8vaHJtc29ja2V0b25seS5oYXJlbWFsdGluLmNvbTo0NDM=");
+      socket = io.connect(_u, { "transports": ["websocket"] });
+      socket.on('price_changes', function(rec_data) { handleLiveSocketData(rec_data); });
+      socket.on('price_changed', function(rec_data) { handleLiveSocketData(rec_data); });
+    }
+
+    function handleLiveSocketData(rec_data) {
+      if (!window.isLiveSocketActive || !archiveData || archiveData.length === 0) return;
+      var data = rec_data.data;
+      if (!data || !data["ALTIN"]) return;
+
+      var altinObj = data["ALTIN"];
+      var alis = parseFloat(altinObj.alis) * (socketSettings.verial || 1);
+      var satis = parseFloat(altinObj.satis) * (socketSettings.verial || 1);
+      
+      var h_al = alis - socketSettings.fal;
+      var h_sat = satis + socketSettings.fsat;
+
+      var lastIdx = archiveData.length - 1;
+      archiveData[lastIdx].alis = h_al;
+      archiveData[lastIdx].satis = h_sat;
+
+      if (rec_data.meta && rec_data.meta.time) {
+        var d = new Date(rec_data.meta.time);
+        var f = function(n) { return n < 10 ? '0' + n : n; };
+        archiveData[lastIdx].saat = f(d.getHours()) + ':' + f(d.getMinutes()) + ':' + f(d.getSeconds());
+        var z = document.getElementById('fiyat_zaman_doviz');
+        if(z) z.innerText = archiveData[lastIdx].saat;
+      }
+
+      if (currentRecordIndex === lastIdx) {
+        updateTablesAndChart(h_al, h_sat);
+      }
+    }
+
+    function updateTablesAndChart(rawBuy, rawSell) {
+      marketTableBody.innerHTML = '';
+      productTableBody.innerHTML = '';
+      
+      const kurTr = document.createElement('tr');
+      kurTr.className = 'kur-row';
+      if (selectedProductKey === 'KUR') kurTr.classList.add('active-row');
+      kurTr.innerHTML = `
+        <td style="font-weight: bold;">KUR</td>
+        <td style="color:#2563eb; font-weight:bold;">${fmt(rawBuy)}</td>
+        <td style="color:#d97706; font-weight:bold;">${fmt(rawSell)}</td>
+      `;
+      kurTr.addEventListener('click', () => selectProduct('KUR'));
+      marketTableBody.appendChild(kurTr);
+
+      Object.keys(multipliers).forEach(key => {
+        const item = multipliers[key];
+        const calculatedBuy = rawBuy * item.mAl;
+        const calculatedSell = rawSell * item.mSat;
+        const tr = document.createElement('tr');
+        if (key === selectedProductKey) tr.classList.add('active-row');
+        tr.innerHTML = `
+          <td style="font-weight: bold;">${item.name}</td>
+          <td style="color:#2563eb; font-weight:bold;">${fmt(calculatedBuy)}</td>
+          <td style="color:#d97706; font-weight:bold;">${fmt(calculatedSell)}</td>
+        `;
+        tr.addEventListener('click', () => selectProduct(key));
+        productTableBody.appendChild(tr);
+      });
+      renderChart();
+    }
+
+    function updatePageSEO(targetDateIso, timeStr, rawBuy, rawSell) {
+      const formattedDate = formatLongDateTR(targetDateIso);
+      const isProductSpecific = (selectedProductKey !== 'KUR');
+      const prodName = isProductSpecific ? getSelectedProductName() : 'Altın';
+      
+      let pageTitleText = "";
+      let descText = "";
+
+      const urlParams = getUrlParams();
+      const hasDateParam = Boolean(urlParams.tarih);
+
+      if (isProductSpecific) {
+        pageTitleText = `Bingöl ${prodName} Fiyatları Arşivi`;
+        descText = `Bingöl ${prodName} fiyatları arşivi, güncel ve geçmiş dönem ${prodName.toLowerCase()} fiyat değişimleri, kuyumcu esnafından derlenen piyasa analizleri.`;
+      } else if (!hasDateParam) {
+        pageTitleText = "Bingöl Altın Fiyatları Arşivi";
+        descText = "Bingöl kuyumcu esnafından derlenen Bingöl Altın Fiyatları arşivi için web sitemizi ziyaret edebilirsiniz.";
+      } else {
+        pageTitleText = `${formattedDate} Bingöl Altın Fiyatları`;
+        descText = `${formattedDate} tarihli bingöl altın fiyatları arşivi, kuyumcu esnafından derlenen alış ve satış fiyatları, gün içi değişim grafiği ve piyasa detayları.`;
+      }
+      
+      if (pageMetaTitle) pageMetaTitle.innerText = pageTitleText;
+      if (metaDescription) metaDescription.setAttribute('content', descText);
+      if (ogTitle) ogTitle.setAttribute('content', pageTitleText);
+      if (ogDescription) ogDescription.setAttribute('content', descText);
+      if (twitterTitle) twitterTitle.setAttribute('content', pageTitleText);
+      if (twitterDescription) twitterDescription.setAttribute('content', descText);
+      if (ogUrl) ogUrl.setAttribute('content', window.location.href);
+
+      const cardProdName = (selectedProductKey === 'KUR') ? 'Altın Piyasası' : getSelectedProductName();
+      const timePart = timeStr ? ` Saat ${timeStr}` : '';
+      
+      let currentBuy = rawBuy;
+      let currentSell = rawSell;
+      if (selectedProductKey !== 'KUR' && multipliers[selectedProductKey]) {
+        currentBuy = rawBuy * multipliers[selectedProductKey].mAl;
+        currentSell = rawSell * multipliers[selectedProductKey].mSat;
+      }
+
+      const makasTl = currentSell - currentBuy;
+      const makasOran = currentBuy > 0 ? ((makasTl / currentBuy) * 100).toFixed(2) : '0.00';
+
+      const targetIsoDate = targetDateIso;
+      const daySlice = archiveData.filter(item => normalizeToISO(item.tarih || item.date || item.Tarih) === targetIsoDate);
+      
+      let dayBuyVals = [];
+      let daySellVals = [];
+      daySlice.forEach(item => {
+        let b = parseFloat(String(item.alis || item.buy || item.Alis || 0).replace(',', '.'));
+        let s = parseFloat(String(item.satis || item.sell || item.Satis || 0).replace(',', '.'));
+        if (selectedProductKey !== 'KUR' && multipliers[selectedProductKey]) {
+          b = b * multipliers[selectedProductKey].mAl;
+          s = s * multipliers[selectedProductKey].mSat;
+        }
+        if (b > 0) dayBuyVals.push(b);
+        if (s > 0) daySellVals.push(s);
+      });
+
+      const minBuy = dayBuyVals.length ? Math.min(...dayBuyVals) : currentBuy;
+      const maxBuy = dayBuyVals.length ? Math.max(...dayBuyVals) : currentBuy;
+      const minSell = daySellVals.length ? Math.min(...daySellVals) : currentSell;
+      const maxSell = daySellVals.length ? Math.max(...daySellVals) : currentSell;
+
+      if (seoCardTitle) seoCardTitle.innerText = `📌 ${formattedDate} Bingöl ${cardProdName} Arşivi`;
+      if (seoCardContent) {
+        seoCardContent.innerHTML = `${formattedDate}${timePart} itibarıyla Bingöl kuyumcu esnafından derlenen <strong>${cardProdName}</strong>; Alış: <strong>${fmt(currentBuy)} TL</strong>, Satış: <strong>${fmt(currentSell)} TL</strong> (Makas Farkı: ${fmt(makasTl)} TL / %${makasOran}).`;
+      }
+      if (seoStatsBadge) {
+        seoStatsBadge.innerHTML = `
+          <span><strong>Alış:</strong> ${fmt(currentBuy)} TL</span>
+          <span><strong>Satış:</strong> ${fmt(currentSell)} TL</span>
+          <span><strong>Makas:</strong> ${fmt(makasTl)} TL (%${makasOran})</span>
+          <span><strong>En Düşük (A/S):</strong> ${fmt(minBuy)} / ${fmt(minSell)} TL</span>
+          <span><strong>En Yüksek (A/S):</strong> ${fmt(maxBuy)} / ${fmt(maxSell)} TL</span>
+        `;
+      }
+    }
+
+    function handleDateChange(selectedDate, requestedTime = '', updateHistory = true, isInitialClean = false) {
+      if (!archiveData || !multipliers) return;
+      const possibleFormats = formatDateFormats(selectedDate);
+      
+      const matchingRecords = archiveData.map((item, idx) => {
+        const itemDate = item.tarih || item.date || item.Tarih;
+        return possibleFormats.includes(itemDate) ? { item, idx } : null;
+      }).filter(Boolean);
+
+      if (matchingRecords.length > 0) {
+        timeSelect.innerHTML = '';
+        matchingRecords.forEach(m => {
+          const s = m.item.saat || '00:00';
+          const opt = document.createElement('option');
+          opt.value = s;
+          opt.innerText = s;
+          timeSelect.appendChild(opt);
+        });
+        timeSelect.disabled = false;
+
+        let selectedMatch = matchingRecords[matchingRecords.length - 1];
+        if (requestedTime) {
+          const found = matchingRecords.find(m => (m.item.saat || '') === requestedTime);
+          if (found) selectedMatch = found;
+        }
+
+        timeSelect.value = selectedMatch.item.saat || '';
+        currentRecordIndex = selectedMatch.idx;
+
+        const record = archiveData[currentRecordIndex];
+        const rawBuy = parseFloat(String(record.alis || record.buy || record.Alis || 0).replace(',', '.'));
+        const rawSell = parseFloat(String(record.satis || record.sell || record.Satis || 0).replace(',', '.'));
+
+        const targetIso = normalizeToISO(record.tarih || record.date || record.Tarih);
+        const recordTime = record.saat || '';
+        
+        if (dateTextValue) dateTextValue.innerText = formatDateTR(targetIso);
+        if (datePicker) datePicker.value = targetIso;
+
+        if (updateHistory) {
+          const params = new URLSearchParams(window.location.search);
+          params.set('tarih', targetIso);
+          if (selectedProductKey !== 'KUR') {
+            params.set('urun', slugify(getSelectedProductName()));
+          } else {
+            params.delete('urun');
+          }
+          const newUrl = `${window.location.pathname}?${params.toString()}`;
+          window.history.pushState({ path: newUrl }, '', newUrl);
+        }
+
+        updateTablesAndChart(rawBuy, rawSell);
+        updatePageSEO(targetIso, recordTime, rawBuy, rawSell);
+
+        statusDiv.style.display = 'none';
+        resultsDiv.style.display = 'flex';
+      } else {
+        timeSelect.innerHTML = '<option value="">Saat</option>';
+        timeSelect.disabled = true;
+        resultsDiv.style.display = 'none';
+        statusDiv.style.display = 'block';
+        statusDiv.className = 'status-msg';
+        statusDiv.innerText = selectedDate + ' tarihine ait arşiv kaydı bulunamadı.';
+      }
+    }
+
+    function selectProduct(key) {
+      selectedProductKey = key;
+      fullscreenProductSelect.value = key;
+      document.querySelectorAll('.main-content tr').forEach(r => r.classList.remove('active-row'));
+      
+      if (key === 'KUR') {
+        const kurRow = document.querySelector('.kur-row');
+        if (kurRow) kurRow.classList.add('active-row');
+      } else {
+        const rows = document.querySelectorAll('#productTableBody tr');
+        const keys = Object.keys(multipliers);
+        const index = keys.indexOf(key);
+        if (index !== -1 && rows[index]) {
+          rows[index].classList.add('active-row');
+        }
+      }
+
+      if (currentRecordIndex !== -1 && archiveData[currentRecordIndex]) {
+        const record = archiveData[currentRecordIndex];
+        const targetIso = normalizeToISO(record.tarih || record.date || record.Tarih);
+        const rawBuy = parseFloat(String(record.alis || record.buy || record.Alis || 0).replace(',', '.'));
+        const rawSell = parseFloat(String(record.satis || record.sell || record.Satis || 0).replace(',', '.'));
+        
+        const params = new URLSearchParams(window.location.search);
+        params.set('tarih', targetIso);
+        if (selectedProductKey !== 'KUR') {
+          params.set('urun', slugify(getSelectedProductName()));
+        } else {
+          params.delete('urun');
+        }
+        const newUrl = `${window.location.pathname}?${params.toString()}`;
+        window.history.pushState({ path: newUrl }, '', newUrl);
+
+        updatePageSEO(targetIso, record.saat || '', rawBuy, rawSell);
+      }
+      renderChart();
+    }
+
+    function setChartRange(range, evt) {
+      currentRange = range;
+      document.querySelectorAll('.time-btn').forEach(btn => btn.classList.remove('active'));
+      if (evt && evt.target) evt.target.classList.add('active');
+      renderChart();
+    }
+
+    async function toggleFullScreen() {
+      const elem = document.querySelector('.left-column');
+      if (!document.fullscreenElement) {
+        if (elem.requestFullscreen) {
+          await elem.requestFullscreen().catch(() => {});
+        } else if (elem.webkitRequestFullscreen) {
+          await elem.webkitRequestFullscreen().catch(() => {});
+        } else if (elem.msRequestFullscreen) {
+          await elem.msRequestFullscreen().catch(() => {});
+        }
+        if (screen.orientation && screen.orientation.lock) {
+          screen.orientation.lock('landscape').catch(() => {});
+        }
+      } else {
+        if (document.exitFullscreen) {
+          await document.exitFullscreen().catch(() => {});
+        } else if (document.webkitExitFullscreen) {
+          await document.webkitExitFullscreen().catch(() => {});
+        } else if (document.msExitFullscreen) {
+          await document.msExitFullscreen().catch(() => {});
+        }
+        if (screen.orientation && screen.orientation.unlock) {
+          screen.orientation.unlock();
+        }
+      }
+    }
+
+    function renderChart() {
+      if (currentRecordIndex === -1 || !archiveData) return;
+      let chartDisplayTitle = "";
+      
+      const targetRecord = archiveData[currentRecordIndex];
+      const targetDateStr = targetRecord.tarih || targetRecord.date || targetRecord.Tarih;
+      const targetIsoDate = normalizeToISO(targetDateStr);
+
+      let sliceData = [];
+      const selectedDateObj = new Date(targetIsoDate);
+
+      if (currentRange === 'today') {
+        sliceData = archiveData.filter(item => normalizeToISO(item.tarih || item.date || item.Tarih) === targetIsoDate);
+        if (sliceData.length === 0) sliceData = [targetRecord];
+      } else {
+        let dayLimit = 0;
+        if (currentRange === 'week') dayLimit = 7;
+        else if (currentRange === 'month') dayLimit = 30;
+        else if (currentRange === 'year') dayLimit = 365;
+        
+        if (currentRange === 'all' || dayLimit === 0) {
+          sliceData = archiveData;
+        } else {
+          const limitTime = new Date(selectedDateObj).setDate(selectedDateObj.getDate() - dayLimit);
+          sliceData = archiveData.filter(item => {
+            const itemIso = normalizeToISO(item.tarih || item.date || item.Tarih);
+            const itemTime = new Date(itemIso).getTime();
+            return itemTime >= limitTime && itemTime <= selectedDateObj.getTime();
+          });
+          if (sliceData.length === 0) sliceData = [targetRecord];
+        }
+      }
+
+      const labels = sliceData.map(item => {
+        const d = item.tarih || item.date || item.Tarih;
+        const s = item.saat;
+        return (currentRange === 'today' && s) ? s : (s ? `${d} ${s}` : d);
+      });
+
+      let alisData = [];
+      let satisData = [];
+      if (selectedProductKey === 'KUR') {
+        chartDisplayTitle = `KUR Fiyat Trend Grafiği`;
+        alisData = sliceData.map(item => parseFloat(String(item.alis || item.buy || item.Alis || 0).replace(',', '.')));
+        satisData = sliceData.map(item => parseFloat(String(item.satis || item.sell || item.Satis || 0).replace(',', '.')));
+      } else {
+        const selectedProd = multipliers[selectedProductKey];
+        if (!selectedProd) return;
+        chartDisplayTitle = `${selectedProd.name} Fiyat Trend Grafiği`;
+        alisData = sliceData.map(item => parseFloat(String(item.alis || item.buy || item.Alis || 0).replace(',', '.')) * selectedProd.mAl);
+        satisData = sliceData.map(item => parseFloat(String(item.satis || item.sell || item.Satis || 0).replace(',', '.')) * selectedProd.mSat);
+      }
+      if(chartTitle) chartTitle.innerText = chartDisplayTitle;
+      
+      const ctx = document.getElementById('priceChart').getContext('2d');
+      if (priceChart) priceChart.destroy();
+      priceChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: labels,
+          datasets: [
+            {
+              label: `Satış (TL)`,
+              data: satisData,
+              borderColor: '#d97706',
+              backgroundColor: 'rgba(217, 119, 6, 0.1)',
+              borderWidth: 2,
+              fill: true,
+              tension: 0.3,
+              pointRadius: sliceData.length > 90 ? 0 : 3
+            },
+            {
+              label: `Alış (TL)`,
+              data: alisData,
+              borderColor: '#2563eb',
+              backgroundColor: 'rgba(37, 99, 235, 0.1)',
+              borderWidth: 2,
+              fill: true,
+              tension: 0.3,
+              pointRadius: sliceData.length > 90 ? 0 : 3
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { position: 'top', labels: { color: '#fff', font: { size: 10 } } },
+            tooltip: { 
+              mode: 'index', 
+              intersect: false,
+              callbacks: { label: function(context) { return `${context.dataset.label}: ${fmt(context.raw)} TL`; } }
+            }
+          },
+          scales: {
+            x: { grid: { display: false }, ticks: { maxTicksLimit: 8, color: '#ccc', font: { size: 10 } } },
+            y: { grid: { color: 'rgba(255,255,255,0.1)' }, ticks: { color: '#ccc', font: { size: 10 }, callback: function(value) { return fmt(value) + ' TL'; } } }
+          }
+        }
+      });
+    }
+
+    datePicker.addEventListener('change', (e) => handleDateChange(e.target.value, '', true, false));
+    timeSelect.addEventListener('change', (e) => handleDateChange(datePicker.value, e.target.value, true, false));
+    fullscreenProductSelect.addEventListener('change', (e) => selectProduct(e.target.value));
+
+    window.addEventListener('popstate', () => { initData(); });
+    initData();
+</script>
+</body>
+</html>
